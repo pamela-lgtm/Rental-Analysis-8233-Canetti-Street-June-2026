@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Market Analysis — 8233 Canetti Street | Verandah Properties</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@500;600;700&family=Jost:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#008C82;--teal-deep:#06605A;--gold:#D4AF50;--gold-soft:#E7D2A0;
+    --charcoal:#1A1A1A;--ink:#2A2A2A;--paper:#FBFAF6;--paper-2:#F3F0E7;
+    --line:#E2DDCF;--muted:#6E6A60;--pos:#2F7D5B;--warn:#B07A2E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:16px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  .masthead{background:radial-gradient(120% 130% at 85% -10%, rgba(212,175,80,.18), transparent 55%),linear-gradient(135deg, var(--charcoal) 0%, #11302E 60%, var(--teal-deep) 130%);color:#fff;padding:62px 0 54px;position:relative;overflow:hidden;}
+  .masthead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--teal) 0%,var(--gold) 55%,var(--gold-soft) 100%);}
+  .brandline{font-family:'Jost',sans-serif;letter-spacing:.42em;text-transform:uppercase;font-size:11px;font-weight:400;color:var(--gold-soft);margin-bottom:26px;}
+  .eyebrow{font-family:'Jost',sans-serif;letter-spacing:.30em;text-transform:uppercase;font-size:11.5px;color:var(--gold);margin-bottom:14px;}
+  h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(34px,5vw,52px);line-height:1.06;letter-spacing:.005em;}
+  .sub-addr{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#E8E5DC;margin-top:10px;font-style:italic;}
+  .tagline{margin-top:30px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--gold-soft);border-left:2px solid var(--gold);padding-left:16px;}
+
+  section{padding:50px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px;}
+  .sec-num{font-family:'Jost',sans-serif;font-weight:500;font-size:13px;color:var(--teal);letter-spacing:.18em;border:1px solid var(--teal);border-radius:2px;padding:3px 9px;white-space:nowrap;}
+  h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(24px,3.4vw,32px);color:var(--charcoal);line-height:1.12;}
+  h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;color:var(--teal-deep);margin:24px 0 8px;}
+  p{margin-bottom:14px;}
+  p.lead{font-size:18px;color:var(--ink);}
+  strong{font-weight:600;color:var(--charcoal);}
+
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:8px;}
+  .snap-cell{background:var(--paper);padding:18px 18px;}
+  .snap-cell .k{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.13em;font-size:10.5px;color:var(--muted);margin-bottom:5px;}
+  .snap-cell .v{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;color:var(--charcoal);line-height:1.05;}
+  .snap-cell .v small{font-size:13px;color:var(--muted);font-family:'DM Sans',sans-serif;}
+
+  .feat-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;}
+  .chip{font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:.02em;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 15px;color:var(--ink);}
+  .chip b{color:var(--teal-deep);font-weight:500;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:10px;}
+  .amen-list{list-style:none;margin-top:6px;}
+  .amen-list li{position:relative;padding-left:22px;margin-bottom:9px;font-size:15px;}
+  .amen-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg);}
+
+  .table-scroll{overflow-x:auto;margin-top:6px;border-radius:6px;border:1px solid var(--line);}
+  table{width:100%;border-collapse:collapse;min-width:780px;background:#fff;}
+  thead th{background:var(--charcoal);color:#fff;font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.08em;font-size:11px;text-align:left;padding:13px 14px;}
+  tbody td{padding:13px 14px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr.subject{background:linear-gradient(90deg,rgba(0,140,130,.09),rgba(212,175,80,.06));}
+  tbody tr.subject td{font-weight:500;}
+  tbody tr.exclude td{color:var(--muted);}
+  .addr-cell b{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--charcoal);display:block;line-height:1.15;}
+  .addr-cell span{font-size:11.5px;color:var(--muted);font-family:'Jost',sans-serif;letter-spacing:.04em;}
+  .pill{display:inline-block;font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:3px;}
+  .pill.lsd{background:rgba(47,125,91,.12);color:var(--pos);}
+  .pill.act{background:rgba(176,122,46,.14);color:var(--warn);}
+  .pill.subj{background:var(--teal);color:#fff;}
+  .pill.exc{background:#EBE7DC;color:var(--muted);}
+  .rent-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--charcoal);}
+  .tnote{font-size:13px;color:var(--muted);margin-top:14px;font-style:italic;}
+
+  .note{background:var(--paper-2);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:20px 24px;margin:24px 0;}
+  .note.warnflag{border-left-color:var(--warn);}
+  .note .nh{font-family:'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--teal-deep);margin-bottom:7px;}
+  .note.warnflag .nh{color:var(--warn);}
+  .note p:last-child{margin-bottom:0;}
+
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 8px;}
+  .tier{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px 22px;position:relative;display:flex;flex-direction:column;}
+  .tier.reco{border:1.5px solid var(--teal);box-shadow:0 14px 34px -20px rgba(0,140,130,.55);}
+  .tier .badge{position:absolute;top:-11px;left:22px;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 11px;border-radius:3px;}
+  .tier .label{font-family:'Jost',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--muted);margin-bottom:10px;}
+  .tier .price{font-family:'Playfair Display',serif;font-weight:600;font-size:34px;color:var(--charcoal);line-height:1;}
+  .tier .price small{font-size:14px;color:var(--muted);font-weight:400;font-family:'DM Sans',sans-serif;}
+  .tier .days{margin-top:8px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--teal-deep);}
+  .tier .desc{font-size:13.5px;color:var(--ink);margin-top:14px;}
+
+  .headline-rec{margin-top:30px;background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff;border-radius:10px;padding:32px 34px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
+  .headline-rec .hr-left .k{font-family:'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--gold-soft);}
+  .headline-rec .hr-left .big{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;line-height:1;margin-top:4px;}
+  .headline-rec .hr-left .big small{font-size:17px;font-weight:400;color:#DCEEEB;}
+  .headline-rec .hr-right{max-width:440px;font-size:14.5px;color:#EAF6F4;}
+  .headline-rec .hr-right strong{color:#fff;}
+
+  .ready{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px;}
+  .ready .card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 22px;}
+  .ready .card h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--teal-deep);margin-bottom:8px;}
+  .ready .card ul{list-style:none;}
+  .ready .card li{position:relative;padding-left:20px;margin-bottom:7px;font-size:14px;}
+  .ready .card li::before{content:"✓";position:absolute;left:0;top:0;color:var(--gold);font-weight:700;}
+
+  .qa{margin-top:8px;}
+  .qa .item{border-bottom:1px solid var(--line);padding:18px 0;}
+  .qa .item:last-child{border-bottom:none;}
+  .qa .q{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--charcoal);margin-bottom:6px;}
+  .qa .a{font-size:15px;}
+  .qa .a p{margin-bottom:10px;}
+  .qa .a p:last-child{margin-bottom:0;}
+
+  footer{background:var(--charcoal);color:#CFCBC0;padding:46px 0 38px;}
+  footer .f-brand{font-family:'Playfair Display',serif;color:#fff;font-size:24px;font-weight:600;}
+  footer .f-brand span{color:var(--gold);}
+  footer .f-tag{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-soft);font-size:18px;margin-top:4px;}
+  footer .f-meta{margin-top:22px;font-size:13px;color:#9C9789;line-height:1.7;}
+  footer .f-prep{margin-top:18px;font-size:14px;color:#E4E0D6;}
+  footer .f-prep b{color:#fff;font-weight:600;}
+  footer a{color:var(--gold-soft);}
+  .disclaimer{font-size:11.5px;color:#807B70;margin-top:24px;border-top:1px solid #333;padding-top:18px;line-height:1.6;}
+
+  a{color:var(--teal);}
+
+  @media (max-width:760px){
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .two-col,.tiers,.ready{grid-template-columns:1fr;}
+    .headline-rec{flex-direction:column;align-items:flex-start;}
+  }
+  @media print{
+    body{background:#fff;font-size:12px;}
+    .masthead{padding:40px 0 34px;}
+    section{padding:30px 0;}
+    .tier.reco{box-shadow:none;}
+    .headline-rec,.tier,.note,.ready .card,.qa .item{break-inside:avoid;}
+    a{color:var(--ink);text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="brandline">Verandah Properties&nbsp;&nbsp;·&nbsp;&nbsp;Curating Lake Nona's Finest Rental Portfolio</div>
+    <div class="eyebrow">Rental Market Analysis &amp; Pricing Strategy</div>
+    <h1>8233 Canetti Street</h1>
+    <div class="sub-addr">Orlando, Florida 32827 &nbsp;·&nbsp; Laureate Park, Phase 1B &nbsp;·&nbsp; Lake Nona</div>
+    <div class="tagline">An honest read of where this investment stands —<br>and what it takes to lease it, well, in 21 days or fewer.</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 01 -->
+  <section id="subject">
+    <div class="sec-head"><span class="sec-num">01 · The Investment</span></div>
+    <h2>A 2015 Laureate Park residence in the heart of Lake Nona</h2>
+    <p class="lead">This is a substantial single-family investment in one of Lake Nona's most established and walkable phases — close to Town Center, Medical City, and the full Laureate Park amenity stack. The market for it is strong, but at this price point it is also discerning: the rent a home like this commands, and how quickly it leases, are decided almost entirely by condition and presentation. The analysis below is built around that reality.</p>
+
+    <div class="snapshot">
+      <div class="snap-cell"><div class="k">Bedrooms</div><div class="v">4–5 <small>*confirm</small></div></div>
+      <div class="snap-cell"><div class="k">Bathrooms</div><div class="v">3.5–4 <small>*confirm</small></div></div>
+      <div class="snap-cell"><div class="k">Living Area</div><div class="v">~3,735 <small>sq ft*</small></div></div>
+      <div class="snap-cell"><div class="k">Year Built</div><div class="v">2015</div></div>
+      <div class="snap-cell"><div class="k">Garage</div><div class="v">2 <small>car</small></div></div>
+      <div class="snap-cell"><div class="k">Stories</div><div class="v">Two</div></div>
+      <div class="snap-cell"><div class="k">Pool</div><div class="v">Community</div></div>
+      <div class="snap-cell"><div class="k">HOA</div><div class="v">$146 <small>/mo + CDD</small></div></div>
+    </div>
+
+    <div class="feat-row">
+      <span class="chip"><b>Laureate Park Ph 1B — central</b></span>
+      <span class="chip">Built 2015</span>
+      <span class="chip">Primary suite on main floor</span>
+      <span class="chip">Loft + flex / study spaces</span>
+      <span class="chip">Aquatic Center &amp; LP Fit gym</span>
+      <span class="chip">44+ miles of trails</span>
+      <span class="chip">Walkable to Lake Nona Town Center</span>
+      <span class="chip">Minutes to Medical City</span>
+    </div>
+
+    <div class="note warnflag">
+      <div class="nh">Confirm before we market — these details carry liability</div>
+      <p>The records don't agree, and the gap matters. The 2018 purchase recorded this home as <strong>4 bed / 3.5 bath at 3,994 sq ft</strong>; the current rental listing markets it as <strong>5 bed / 4 bath at 3,735 sq ft</strong>. A room cannot be advertised as a bedroom without a conforming closet (and proper egress) — so before we publish a bedroom count, we confirm whether a den, flex, or game room was converted, and we reconcile the square footage to a single defensible source. Marketing the wrong count is exactly the kind of detail that creates problems later, and we don't cut that corner.</p>
+    </div>
+
+    <div class="note">
+      <div class="nh">Furnished status — confirmed unfurnished</div>
+      <p>The home's current third-party listing (Bull Property Management, MLS R4911417) shows it as <strong>furnished, with cable and internet included</strong> — but you've confirmed that designation is not accurate: the home will be offered <strong>unfurnished</strong>, with the tenant responsible for their own services. That's squarely Verandah's lane — long-term, unfurnished single-family rentals — so every figure in this analysis reflects an unfurnished placement, and the current furnished listing is set aside as an error.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section id="neighborhood">
+    <div class="sec-head"><span class="sec-num">02 · The Location</span></div>
+    <h2>Laureate Park — and why "the Preserve" is a different market</h2>
+    <p>Laureate Park is the urban-grid core of Lake Nona in 32827 — walkable to Lake Nona Town Center and Medical City, and built around an exceptional amenity package: the Aquatic Center and resort-style pools, the LP Fit gym, the Lake House event venue, community gardens, a dog park, and more than forty miles of trails. Phase 1B, where this home sits, is one of the original, central phases — close to the heart of that amenity grid, which is consistently where tenant demand is strongest.</p>
+    <p>It's also genuinely central to the things that drive Lake Nona's renter pool: Medical City, the VA and Nemours hospitals, the USTA campus, Orlando International Airport, and the 417/528 corridor. That demand base — relocating healthcare professionals, corporate transfers, airline crews — is exactly the well-qualified, long-term tenant this investment should attract when it's presented correctly.</p>
+
+    <div class="note">
+      <div class="nh">The Preserve at Laureate Park — why it commands more</div>
+      <p>You may come across a recent Laureate Park lease at <strong>$7,200</strong> — and it's worth understanding why it isn't a true comp for your home, so we've left it out of the comp set entirely. That home is in <strong>The Preserve at Laureate Park</strong> — Laureate Park's <strong>only gated enclave</strong>, on the northern end, built by Taylor Morrison on the <strong>largest, oversized lots</strong> in the community, with larger custom and semi-custom floor plans (up to ~4,950 sq ft) and several lakeside sites. Many sell north of $1M. It carries a genuine privacy-and-prestige premium that the non-gated Laureate Park homes that make up the rest of the community — including this one — simply do not, and pricing 8233 Canetti against it would set a number the market will never pay.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section id="comps">
+    <div class="sec-head"><span class="sec-num">03 · The Comparables</span></div>
+    <h2>A wide field — narrowed to what actually compares</h2>
+    <p>Recent Laureate Park leases span a wide range, so the work here is separating the true comparables from the ones that mislead. With the gated Preserve lease set aside (see Section 02) and a clear pricing anomaly excluded, a tight, honest picture emerges.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Property</th><th>Bed / Bath</th><th>Sq Ft · Yr</th><th>Notes</th><th>Status</th><th>Rent</th><th>Days</th></tr>
+        </thead>
+        <tbody>
+          <tr class="subject">
+            <td class="addr-cell"><b>8233 Canetti St</b><span>Laureate Park Ph 1B</span></td>
+            <td>4–5 / 3.5–4*</td>
+            <td>~3,735 · 2015</td>
+            <td>Central phase · 2-car · community amenities · unfurnished placement</td>
+            <td><span class="pill subj">Subject</span></td>
+            <td class="rent-num">—</td>
+            <td>Target ≤21</td>
+          </tr>
+          <tr>
+            <td class="addr-cell"><b>9112 Yonath St</b><span>Laureate Park Ph 5A</span></td>
+            <td>5 / 4.1</td>
+            <td>3,620 · 2016</td>
+            <td>Closest match — asked $4,750, leased at 90.5% of ask (overpriced out of the gate)</td>
+            <td><span class="pill lsd">Leased 04/16/26</span></td>
+            <td class="rent-num">$4,300</td>
+            <td>26</td>
+          </tr>
+          <tr>
+            <td class="addr-cell"><b>8549 Laureate Blvd</b><span>Laureate Park Ph 1C</span></td>
+            <td>4 / 4.1</td>
+            <td>3,643 · 2014</td>
+            <td>Leased at full ask, but took 54 days — a condition / presentation signal</td>
+            <td><span class="pill lsd">Leased 05/01/26</span></td>
+            <td class="rent-num">$3,750</td>
+            <td>54</td>
+          </tr>
+          <tr>
+            <td class="addr-cell"><b>9421 Dugard Ct</b><span>Laureate Park Ph 3A</span></td>
+            <td>5 / 4.1</td>
+            <td>3,953 · 2014</td>
+            <td>Asking $5,800 — still active, unproven; watch whether it sits</td>
+            <td><span class="pill act">Active · unleased</span></td>
+            <td class="rent-num">$5,800</td>
+            <td>11</td>
+          </tr>
+          <tr class="exclude">
+            <td class="addr-cell"><b>8276 Modiano St</b><span>Laureate Park Ph 4</span></td>
+            <td>4 / 3.1</td>
+            <td>3,200 · 2020</td>
+            <td>Leased at 133.7% of ask ($4,600 → $6,150) — a data anomaly; set aside</td>
+            <td><span class="pill exc">Excluded</span></td>
+            <td class="rent-num">$6,150</td>
+            <td>55</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tnote">Source: CoreLogic / Stellar MLS rental summary, pulled 6/10/2026. Subject bed/bath/square footage to be confirmed (see Section 01).</p>
+
+    <h3>What the working set tells us</h3>
+    <p><strong>9112 Yonath ($4,300) is the anchor.</strong> A 5/4.1 of nearly identical size (3,620 sq ft) and age (2016) in Laureate Park — the truest match to this home. Notably, it <em>asked</em> $4,750 and had to settle at $4,300, taking 26 days to do it. That's the central lesson: overpricing a strong home doesn't get you more, it gets you a longer vacancy and a price cut anyway.</p>
+    <p><strong>8549 Laureate Blvd ($3,750) marks the lower band.</strong> It leased at full ask but took 54 days — a classic sign of a home that was either priced toward the bottom or didn't present at the top of the market. Either way, it shows where the floor sits and how a less-than-pristine presentation slows things down.</p>
+    <p><strong>9421 Dugard ($5,800 asking) is a caution, not a comp.</strong> It's unproven — newly listed and not yet leased. We'll learn from whether it sits, but we don't price against a number no tenant has agreed to.</p>
+    <p><strong>On the $4,900 listing:</strong> Bull's current listing shows the home furnished with cable and internet bundled in — but since it will be offered unfurnished (Section 01), that figure isn't the benchmark for this placement. Even taken at face value, a furnished, services-included rate carries a higher headline number by design while trading that premium for a far smaller long-term tenant pool (most quality long-term renters own their furniture) and added owner liability. Backing those inclusions out, it lands right in line with the unfurnished working set — so it doesn't change the recommendation below.</p>
+  </section>
+
+  <!-- 04 -->
+  <section id="pricing">
+    <div class="sec-head"><span class="sec-num">04 · The Recommendation</span></div>
+    <h2>The number — and the condition it depends on</h2>
+    <p class="lead"><strong>This analysis is based on an unfurnished placement</strong> (see Section 01). Anchored to the $4,300 Yonath lease and lifted modestly for this home's larger footprint and more central phase, an unfurnished, <strong>show-ready</strong> home points to a tight, defensible range. The word that governs all of it is <em>show-ready</em> — see Section 05.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="label">Speed Floor</div>
+        <div class="price">$4,295<small>/mo</small></div>
+        <div class="days">≤14 days · if pristine</div>
+        <div class="desc">Matches the proven Yonath lease. Books showings fast and protects against any softness in condition.</div>
+      </div>
+      <div class="tier reco">
+        <div class="badge">Recommended</div>
+        <div class="label">Launch — show-ready</div>
+        <div class="price">$4,395<small>/mo</small></div>
+        <div class="days">≤21 days · high confidence</div>
+        <div class="desc">A modest, earned premium over Yonath for the larger footprint and central Phase 1B location — disciplined enough to lease quickly rather than sit and cut.</div>
+      </div>
+      <div class="tier">
+        <div class="label">Stretch Ceiling</div>
+        <div class="price">$4,550<small>/mo</small></div>
+        <div class="days">21–30 days · condition-led</div>
+        <div class="desc">Only if the home shows exceptionally — updated, hard-floor-forward, immaculate. Accept a longer market time at this number.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <div class="nh">Why this isn't the 2023 number</div>
+      <p>This home leased at <strong>$4,500 in 2023</strong>, so it's fair to ask why the recommendation isn't higher three years on. (That 2023 listing also showed as furnished — but, as with the current listing, we can't confirm that was accurate, so we treat it as an unfurnished lease.) The reason the number isn't higher is supply: since 2023, builders have released a substantial wave of new construction across Lake Nona, and that added competition has pressured rents on existing homes; tenants simply have more choices today than they did then. An unfurnished placement in today's market lands at or just below that 2023 figure — not above it. That's an accurate read, not a discount, and pricing as if 2023 conditions still hold is one of the surest ways to make a home sit.</p>
+    </div>
+
+    <div class="note warnflag">
+      <div class="nh">The line we do not cross</div>
+      <p><strong>Avoid the $4,750–$5,800 zone.</strong> Yonath asked $4,750 and the market pushed it down to $4,300; Dugard is sitting at $5,800 unleased. For a non-gated Laureate Park home like this one, pricing into that range is how you guarantee a long vacancy — the opposite of the goal.</p>
+    </div>
+
+    <div class="headline-rec">
+      <div class="hr-left">
+        <div class="k">Recommended launch — unfurnished, show-ready</div>
+        <div class="big">$4,395<small> / month</small></div>
+      </div>
+      <div class="hr-right">
+        <strong>This number assumes the home is presented pristine.</strong> If it isn't yet, the right first investment is condition — not a higher price. A show-ready home at $4,395 leases in days; a tired one at any price sits for weeks. Confirm the bed/bath count, and we'll finalize.
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section id="ready">
+    <div class="sec-head"><span class="sec-num">05 · Condition Is Everything</span></div>
+    <h2>At this price point, presentation is the whole game</h2>
+    <p>There is no meaningful "average" days-on-market for a Lake Nona home, because the number is driven by condition and price, not the calendar. A home that is pristine and priced correctly leases inside 21 days — often far faster. A home that is dated or shows poorly will sit for weeks at <em>any</em> price, while the owner absorbs the vacancy. The well-qualified tenant this investment should attract expects the home to be immaculate, and increasingly expects <strong>hard flooring over carpet</strong>. To command the best resident, a rental investment has to stay current with updates and, at minimum, be flawless in its presentation.</p>
+
+    <div class="note">
+      <div class="nh">A real, recent benchmark</div>
+      <p>Last week we leased a home in the Isles of Lake Nona <strong>in two days, at $3,995</strong> — a 2023-built, single-story 4/3 with a three-car garage and water views — to a highly qualified renter relocating with a major airline. It moved that fast because it was pristine and priced right. That is the standard this market rewards, and it's the standard we hold every listing to.</p>
+    </div>
+
+    <div class="ready">
+      <div class="card">
+        <h4>Clean &amp; current</h4>
+        <ul>
+          <li>Fresh, <strong>neutral paint</strong> throughout</li>
+          <li><strong>Hard flooring</strong> favored over carpet wherever possible</li>
+          <li>Professionally deep-cleaned, top to bottom</li>
+          <li>Decluttered and depersonalized — bright and open</li>
+          <li>Finishes current enough to compete with newer inventory</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Functional &amp; finished</h4>
+        <ul>
+          <li>Every system working — A/C, appliances, plumbing, electrical</li>
+          <li>All minor repairs completed before listing</li>
+          <li>Lighting, fixtures, and hardware clean and consistent</li>
+          <li>Landscaping and exterior crisp for curb appeal</li>
+          <li>Professional photography — not a single front shot</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section id="questions">
+    <div class="sec-head"><span class="sec-num">06 · Your Questions, Answered</span></div>
+    <h2>Directly to the points you raised</h2>
+    <div class="qa">
+      <div class="item">
+        <div class="q">What rental rate would the home obtain?</div>
+        <div class="a"><p>Unfurnished and show-ready, the working comparables support roughly <strong>$4,300–$4,550</strong>, and we'd recommend launching at <strong>$4,395</strong>. The $4,900 you're seeing now is a furnished rate with cable and internet bundled in — a different product that isn't directly comparable.</p></div>
+      </div>
+      <div class="item">
+        <div class="q">What's the average vacancy between tenants?</div>
+        <div class="a"><p>Honestly, there isn't a reliable average — and any manager who quotes you one is guessing. Vacancy length is a function of two things you control: <strong>condition and price</strong>. A pristine, correctly priced home leases inside 21 days, frequently faster (our recent Isles lease took two). A turn between an outgoing and incoming tenant then depends only on the make-ready scope — typically a short, defined window, not an open-ended gap.</p></div>
+      </div>
+      <div class="item">
+        <div class="q">Won't I get stuck off the summer leasing cycle?</div>
+        <div class="a"><p>That risk comes from <em>slow</em> lease-ups, not from the calendar. When a home leases in two-to-three weeks, you stay on the cycle you want — and you can align the lease term so renewals and turnovers land in the stronger spring/summer window going forward. Leasing fast is precisely how we keep you on-cycle rather than off it.</p></div>
+      </div>
+      <div class="item">
+        <div class="q">How long do Laureate Park homes stay vacant once available?</div>
+        <div class="a"><p>The well-presented ones in the heart of Laureate Park move quickly — demand here is deep. The ones that linger are the over-priced or under-presented (you can see it in the comps: Yonath had to cut its price; the $3,750 home still took 54 days). Location helps, but condition and price decide it.</p></div>
+      </div>
+      <div class="item">
+        <div class="q">What fees apply between tenants, beyond the 50% leasing fee?</div>
+        <div class="a"><p>The full, transparent fee structure — including turnover and make-ready — is laid out in the Lake Nona Owner Guide, alongside our FAQs and a sample management agreement, which is a standard document we do not modify. One point worth flagging now, since you're thinking about turnover cost: the single best way to avoid turnover expense is to <strong>retain a great tenant</strong>, which is why our renewal fee is a flat $200 — a fraction of the cost of re-leasing. Keeping a qualified resident in place is both the cheapest and the lowest-risk outcome, and it's what we optimize for.</p>
+        <p>Guide &amp; FAQs: <a href="https://pamela-lgtm.github.io/Lake-Nona-Owner-Guide-May-19-2026/">Lake Nona Owner Guide</a></p></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">Verandah <span>Properties</span></div>
+    <div class="f-tag">The marriage, not the sprint.</div>
+    <div class="f-prep">Prepared for <b>Matthew J. Catania</b> · <b>8233 Canetti Street, Orlando, FL 32827</b><br>
+      by <b>Pamela Syvertson</b> · Owner &amp; Broker, Verandah Properties, LLC</div>
+    <div class="f-meta">White-glove property management for the Lake Nona &amp; Orlando corridor &nbsp;·&nbsp; June 10, 2026</div>
+    <div class="disclaimer">
+      This is an opinion of rental value and a Comparative Market Analysis. It is not an appraisal and was not prepared under the Uniform Standards of Professional Appraisal Practice. Comparable data is drawn from CoreLogic / Stellar MLS and is deemed reliable but not guaranteed. The subject's bedroom/bathroom count and square footage differ between the public sale record and the current rental listing and must be independently confirmed before marketing. Pricing reflects an unfurnished, show-ready placement, consistent with the owner's confirmation that the home will be leased unfurnished. The current third-party listing showing it as furnished with services included is treated as a listing error and is not a comparable benchmark. Final rental pricing remains at the owner's discretion; actual lease-up time will vary with condition, presentation, pricing, seasonality, and showing availability.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
